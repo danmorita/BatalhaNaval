@@ -1,16 +1,13 @@
 # BatalhaNaval
 
-
-Batalha naval
-
 --------------------------------------------
-classe Barco
+Classe Barco
     Atributos
         int tamanho
         String posicao
 
  --------------------------------------------
-classe Tabuleiro
+Classe Tabuleiro
     Atributos
         String tabuleiro
     Metodos 
@@ -25,7 +22,8 @@ classe Tabuleiro
               //posicao desejada, chama no 
               //metodo posicionarBarco();
 
-classe Jogador
+---------------------------------------------
+Classe Jogador
     Atributo
 
     Metodos
