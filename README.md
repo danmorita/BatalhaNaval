@@ -5,15 +5,15 @@ Batalha naval
 
 --------------------------------------------
 classe Barco
-    atributos
+    Atributos
         int tamanho
         String posicao
 
  --------------------------------------------
 classe Tabuleiro
-    atributos
+    Atributos
         String tabuleiro
-    metodos 
+    Metodos 
         String posicionarBarco(Barco barco);
             //define a posicao na matriz e retorna
             //a posicao para comparacao futura
@@ -26,9 +26,9 @@ classe Tabuleiro
               //metodo posicionarBarco();
 
 classe Jogador
-    atributo
+    Atributo
 
-    metodos
+    Metodos
         boolean atacar(String posicao);
             //ataca e se acertar devolve true e 
             //adiciona a posicao em um vetor 
