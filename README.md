@@ -35,6 +35,46 @@ Classe Jogador
             //adiciona a posicao em um vetor 
             //para comparacao futura msmo 
             //para false
+  
+  ----------------------------------------------
+  Classe Menu
+    
+    -Batalha Naval
+        -Voce tera 5 Navios
+            1 submario
+            2 navios
+            2 encruzadores
+        
+    submarino ocupa 1 de espaco
+    navio ocupa 2 de espaco
+    encruzador ocupa 3 de espaco
+    
+    //imprime a tabela aqui
+    
+    escolha a posicao do submarino:
+    
+    //imprime a tabela aqui com a posicao do barco
+    
+    escolha a posicao do navio:
+    
+    //imprime a tabela aqui com a posicao do barco
+    
+    escolha a posicao do navio:
+    
+    //imprime a tabela aqui com a posicao do barco
+    
+    escolha a posicao do encruzador:
+    
+    //imprime a tabela aqui com a posicao do barco
+    
+    escolha a posicao do encruzador:
+    
+    //imprime a tabela aqui com a posicao do barco
+    
+    //limpe a tela
+    
+    
+        
 
         
 
