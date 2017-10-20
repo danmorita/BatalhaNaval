@@ -2,12 +2,14 @@
 
 --------------------------------------------
 Classe Barco
+
     Atributos
         int tamanho
         String posicao
 
  --------------------------------------------
 Classe Tabuleiro
+
     Atributos
         String tabuleiro
     Metodos 
@@ -24,6 +26,7 @@ Classe Tabuleiro
 
 ---------------------------------------------
 Classe Jogador
+
     Atributo
 
     Metodos
