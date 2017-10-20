@@ -5,12 +5,12 @@ Batalha naval
 
 --------------------------------------------
 classe Barco
-    atributos 
+    atributos
         int tamanho
         String posicao
 
  --------------------------------------------
-classe Tabuleiro   
+classe Tabuleiro
     atributos
         String tabuleiro
     metodos 
