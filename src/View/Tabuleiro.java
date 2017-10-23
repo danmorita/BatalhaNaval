@@ -23,9 +23,10 @@ public class Tabuleiro {
 	
 	private static void MaximoDeNavios() {
 		quantidadeDeNavios = (tabuleiroTamanho*tabuleiroTamanho)/7;
-		System.out.println("Subimarino "+(quantidadeDeNavios-));
-		System.out.println("Porta avioes "+(quantidadeDeNavios-));
-		System.out.println("Bombardeiro "+(quantidadeDeNavios-));
+		quantidadeDeNavios /= 3;
+		System.out.println("Subimarino "+quantidadeDeNavios+".");
+		System.out.println("Porta avioes "+quantidadeDeNavios+".");
+		System.out.println("Bombardeiro "+quantidadeDeNavios+".");
 	}
 
 	public static void main(String[] args) {
@@ -33,11 +34,17 @@ public class Tabuleiro {
 		MaximoDeNavios();
 		IniciaTabuleiro();
 		Scanner leitor = new Scanner(System.in);
-		for(int cont = 0;cont ;cont++) {
-		System.out.println("Enre com a posicao do navios");
-		String posicao = leitor.nextLine();
-		}
+		for(int cont = 0;cont<quantidadeDeNavios ;cont++) {
+		System.out.println("Entre com a posicao dos submarinos: ");
 		
+		}
+		for(int cont = 0;cont<quantidadeDeNavios ;cont++) {
+			System.out.println("Entre com a posicao dos bombardeiros");
+			String posicao = leitor.nextLine();
+		}
+		for(int cont = 0;cont<quantidadeDeNavios ;cont++) {
+			System.out.println("Enre com a posicao dos porta avioes: ");
+		}
 		
 		
 	}

@@ -4,7 +4,7 @@ package Model;
 //private static int navio = 2;
 //private static int encruzador = 3;
 
-public class Barco {
+public class Barco {//Aqui n devaria ser uma interface?
 
 	private int tamanho;
 	private String posicao;
