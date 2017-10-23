@@ -5,7 +5,7 @@ package Model;
 //private static int encruzador = 3;
 
 public class Barco {
-//rrrrrrrrrefsdgsfgf
+
 	private int tamanho;
 	private String posicao;
 	private boolean linha;	
