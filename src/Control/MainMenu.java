@@ -4,6 +4,7 @@ package Control;
 import java.util.Scanner;
 
 import Model.Jogador;
+import Model.NPC;
 
 public class MainMenu {
 	public static void main(String[] args) {
@@ -23,34 +24,35 @@ public class MainMenu {
 		 int player = 0;
 		 int bot = 0;
 		 String vencedor="playing...";
-		 boolean acertos;
+		 boolean acertosPlayer;
+		 boolean acertosBot;
 		 
 		 for(i=0; i<count; i++){
 			 opt=i%2;
 			 switch(opt){
 				 case 0:
-					 System.out.println("player 1");
+					 System.out.println("sua vez...");
 					 
 					 do{	
-						 acertos = npc.escolherPosicao();
-						 if(acertos==true){
+						 acertosPlayer = npc.escolherPosicao();
+						 if(acertosPlayer==true){
 							 player ++;
 						 }
-					 }while(acertos == true);
+					 }while(acertosPlayer == true);
 					 if(player == 11){
 						 vencedor = "Parabens!! voce ganhou da maquina!";
 						 opt = 3;
 					 }
 					 break;
 				 case 1:
-					 System.out.println("bot");
-					 acertos = npc.escolherPosicao();
+					 System.out.println("vez do bot...");
+					 acertosBot = jogador.escolherPosicao();
 					 do{
-						 if(acertos==true){
-							 acertos = jogador.proximaPosicao();
+						 if(acertosBot==true){
+							 acertosBot = jogador.proximaPosicao();
 							 bot ++;
 						 }
-					 }while(acertos == true);
+					 }while(acertosBot == true);
 					 if(bot == 11){
 						 vencedor = "Vitoria do bot!!";
 						 opt = 3;
