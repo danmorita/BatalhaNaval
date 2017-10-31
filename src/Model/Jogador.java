@@ -171,11 +171,14 @@ public class Jogador {
 		tabuleiro.addPosicaoLista(posicao);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
+		System.out.println("ultima acao do jogador...");
 		
 	}
 	public boolean escolherPosicao(){
 		boolean acertou = false;
 		System.out.println("Aguarde o bot... \n");
+		System.out.println("pressione ENTER para continuar...");
+		input.nextLine();
 		posicao = (random.nextInt(9)+1)+""+(random.nextInt(9)+1);
 		acertou = tabuleiro.verificaLista(posicao);
 		if(acertou == true){
@@ -195,6 +198,7 @@ public class Jogador {
 		boolean acertou = false;
 		System.out.println("Aguarde o bot... \n");
 		tabuleiro.imprimirTabuleiro();
+		
 		System.out.println("pressione ENTER para continuar...");
 		input.nextLine();
 		

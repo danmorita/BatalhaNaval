@@ -87,7 +87,7 @@ public class Tabuleiro {
 
 	}
 
-	// metodo que tratamento de erros..
+	// metodo de tratamento de erros..
 	public boolean verificarPosicao(String posicao) {
 		boolean erro = true;
 		String[] col = { "a", "b", "c", "d", "e", "f", "g", "h", "i" };
@@ -125,6 +125,7 @@ public class Tabuleiro {
 	public boolean verificaLista(String posicao) {
 		boolean erro = true;
 		// se a posicao for igual retorna falso e entra no loop no menu
+		//QUANDO FOR REUTILIZAR ESSE METODO PARA VERIFICAR, CUIDADO COM O RETORNO.. SE ACHAR VAI RETORNAR FALSO.
 		for (String i : posicaoLista) {
 			if (posicao.equals(i)) {
 				erro = false;
@@ -148,13 +149,12 @@ public class Tabuleiro {
 	}
 
 	public boolean verificaMatriz(String posicao){
-		boolean acertou = true;
+		boolean acertou = false;
 		String[] col = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 		String[] lin = { "a", "b", "c", "d", "e", "f", "g", "h", "i" };
 		int i = 0;
 		int coluna = 0;
 		int linha = 0;
-		boolean achou = true;
 		for (i = 0; i < col.length; i++) {
 			if (col[i].equalsIgnoreCase("" + posicao.charAt(0))) {
 				linha = i + 1;
@@ -165,8 +165,9 @@ public class Tabuleiro {
 				coluna = i + 1;
 			}
 		}
-		if(tabuleiro[linha][coluna]=="X"){
-			acertou = false;
+		if(tabuleiro[linha][coluna]=="Ñ"){
+			System.out.println("posicao repetido!");
+			acertou = true;
 		}
 		return acertou;
 	}
