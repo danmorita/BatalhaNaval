@@ -1,72 +1,68 @@
 package Control;
 
+
 import java.util.Scanner;
 
-import Model.Barco;
-import View.Tabuleiro;
+import Model.Jogador;
+import Model.NPC;
 
 public class MainMenu {
-	public static void main(String[] args){
+	public static void main(String[] args) {
+		
+		Jogador jogador = new Jogador();
+		jogador.jogador();
+		NPC npc = new NPC();
+		npc.npc();
+		
+		
+		int numero=0;
 		Scanner input = new Scanner(System.in);
-		String [][]tabu = {{"  ","\t","1","\t2","\t3","\t4","\t5","\t6","\t7","\t8","\t9","\t10\n"},
-				 {"A","\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t "},
-				 {"B","\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t "},
-				 {"C","\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t "},
-				 {"D","\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t "},
-				 {"E","\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t "},
-				 {"F","\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t "},
-				 {"G","\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t "},
-				 {"H","\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t "},
-				 {"I","\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t "},
-				 {"J","\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t","~\t "},
-				};
 		
-		Tabuleiro tabuleiro = new Tabuleiro(tabu);	
-		
-	
-		Barco submarino = new Barco(1);
-		Barco navio1 = new Barco(2);
-		Barco navio2 = new Barco(2);
-		Barco encruzador1 = new Barco(3);
-		Barco encruzador2 = new Barco(3);
-		
-		String []posicaoLista = new String[11];
-		
-		System.out.println("-Batalha NAVAL-");
-		System.out.println("\tVoce tera 5 Barcos");
-		System.out.println("\t\t 1 Submarino");
-		System.out.println("\t\t 2 Navios");
-		System.out.println("\t\t 2 Encruzadores");
-		System.out.println("\n");
-		System.out.println("Submarino Ocupa 1 de espaco");
-		System.out.println("navio ocupa 2 de espaco");
-		System.out.println("encruzador ocupa 3 de espaco");
-		System.out.println("\n");
-		
-			System.out.println("pressione ENTER para continuar...");
-			input.nextLine();
-		
-		tabuleiro.imprimirTabuleiro();
-		System.out.println("\n");
-		System.out.println("OBS: Escolha a primeira posicao e a ultima caso o espaco do barco for maior de 1");
-		System.out.println("Dica: Pode escolher a posicao do barco em horizontal ou vertical...");
-		System.out.println("\n");
-		System.out.println("Escolha a posicao do Submarino: ");
-		submarino.setTamanho(1);
-		submarino.setPosicao(input.nextLine());
-		posicaoLista[0] = submarino.getPosicao();
-		
-		System.out.println("Escolha a posicao inicial  do Navio: ");
-		
-		
-		navio1.setTamanho(2);
-		navio1.setPosicao(input.nextLine());
-		posicaoLista[1] = navio1.getPosicao();
-		
-		System.out.println("Escolha a posicao do Navio: ");
-		navio2.setTamanho(2);
-		navio2.setPosicao(input.nextLine());
-		posicaoLista[2] = navio2.getPosicao();
+		 int count = 1000000;
+		 int i=0;
+		 int opt=0;
+		 int player = 0;
+		 int bot = 0;
+		 String vencedor="playing...";
+		 boolean acertosPlayer;
+		 boolean acertosBot;
+		 
+		 for(i=0; i<count; i++){
+			 opt=i%2;
+			 switch(opt){
+				 case 0:
+					 System.out.println("sua vez...");
+					 
+					 do{	
+						 acertosPlayer = npc.escolherPosicao();
+						 if(acertosPlayer==true){
+							 player ++;
+						 }
+					 }while(acertosPlayer == true);
+					 if(player == 11){
+						 vencedor = "Parabens!! voce ganhou da maquina!";
+						 opt = 3;
+					 }
+					 break;
+				 case 1:
+					 System.out.println("vez do bot...");
+					 acertosBot = jogador.escolherPosicao();
+					 do{
+						 if(acertosBot==true){
+							 acertosBot = jogador.proximaPosicao();
+							 bot ++;
+						 }
+					 }while(acertosBot == true);
+					 if(bot == 11){
+						 vencedor = "Vitoria do bot!!";
+						 opt = 3;
+					 }
+					 break;
+				 case 3:
+					 System.out.println(vencedor);
+				 default:
+			 }
+		 }
 		
 	}
 }
