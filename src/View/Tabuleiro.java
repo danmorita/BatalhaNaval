@@ -13,7 +13,7 @@ public class Tabuleiro {
 	}
 
 	// posiciona na matriz o valor desejado, primeiro parametro para posicao ex:
-	// A2, segundo parametro a leganda ex: N, Ñ, X para aparecer na tabela
+	// A2, segundo parametro a leganda ex: N, ï¿½, X para aparecer na tabela
 	public void posicionarBarco(String posicao, String valor) {
 		String[] col = { "a", "b", "c", "d", "e", "f", "g", "h", "i" };
 		String[] lin = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -35,7 +35,35 @@ public class Tabuleiro {
 		}
 		System.out.println(linha + "/" + coluna);
 	}
-
+        public void posicionaHoriVert(String posicao,String vertical){
+              String[] col = { "a", "b", "c", "d", "e", "f", "g", "h", "i" };
+		String[] lin = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+		int i = 0;
+		int coluna = 0;
+		int linha = 0;
+            if(vertical.toLowerCase() ==  "h"){
+              
+		for (i = 0; i < col.length; i++) {
+			if (col[i].equalsIgnoreCase("" + posicao.charAt(0))) {
+				linha = i + 2;
+			}
+		}
+                if(linha != 0){
+                     this.tabuleiro[linha][coluna + 1] =  "N\t";
+                }
+            }
+            if(vertical.toLowerCase() == "v"){
+                for (i = 0; i < lin.length; i++) {
+			if (lin[i].equalsIgnoreCase("" + posicao.charAt(1))) {
+				coluna = i + 2;
+                        }
+            }
+                if(coluna!= 0){
+                    this.tabuleiro[linha+2][coluna] = "N\t"; 
+                }
+            
+            
+        }
 	public void verificaHoriVert(String posicao) {
 		String[] col = { "a", "b", "c", "d", "e", "f", "g", "h", "i" };
 		String[] lin = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -55,6 +83,7 @@ public class Tabuleiro {
 		if (this.pegaPosicaoLista(posicaoLista.size()).charAt(0) == posicao.charAt(0)) {
 
 		}
+               
 
 	}
 

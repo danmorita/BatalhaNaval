@@ -2,8 +2,9 @@ package Model;
 
 import java.util.Random;
 import java.util.Scanner;
-
+import Model.Barco;
 import View.Tabuleiro;
+
 
 public class Jogador {
 	Random random = new Random();
@@ -19,8 +20,8 @@ public class Jogador {
 			{ "H", "\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t" },
 			{ "I", "\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t" },
 			{ "J", "\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t\n" },
-			{ "Legenda:  ", "~ <- oceano\t", "N <- barcos\t", "X <- erros\t", "Ñ <- acertos\t", "P","L","A", "Y", "E","R\n\n" } };
-	String posicao;
+			{ "Legenda:  ", "~ <- oceano\t", "N <- barcos\t", "X <- erros\t", "ï¿½ <- acertos\t", "P","L","A", "Y", "E","R\n\n" } };
+	String posicao,vertical;
 	Tabuleiro tabuleiro = new Tabuleiro(tabu);
 	
 	Barco submarino = new Barco(1);
@@ -56,6 +57,8 @@ public class Jogador {
 		do {
 			System.out.println("Escolha a posicao do Submarino: \n");
 			posicao = input.nextLine().trim();
+                        System.out.println("Vertical ou Horizontal");
+                        
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
 		tabuleiro.addPosicaoLista(posicao);
 		submarino.addPosicao(posicao);
@@ -88,12 +91,15 @@ public class Jogador {
 		do {
 			System.out.println("Escolha a primeira posicao do Navio 2: \n");
 			posicao = input.nextLine().trim();
+                       System.out.println("Vertical ou Horizontal");
+                       vertical = input.nextLine().trim().substring(0);
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
 		navio2.addPosicao(posicao);
 		tabuleiro.addPosicaoLista(posicao);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
-		posicao = null;
+                tabuleiro.posicionaHoriVert(posicao,vertical);
+                posicao = null;
 
 		do {
 			System.out.println("Escolha a primeira posicao do Navio 2: \n");
@@ -176,12 +182,13 @@ public class Jogador {
 			acertou = tabuleiro.verificaMatriz(posicao);
 		}
 		if(acertou==false){
-			tabuleiro.posicionarBarco(posicao, "Ñ");
+			tabuleiro.posicionarBarco(posicao, "ï¿½");
 			acertou=true;
 		}else if(acertou==true){
 			tabuleiro.posicionarBarco(posicao, "X");
 			acertou=false;
 		}
+                
 		return acertou;
 	}
 	public boolean proximaPosicao(){
@@ -193,13 +200,14 @@ public class Jogador {
 		
 		acertou = tabuleiro.verificaLista(posicao);
 		if(acertou==false){
-			tabuleiro.posicionarBarco(posicao, "Ñ");
+			tabuleiro.posicionarBarco(posicao, "ï¿½");
 			acertou=true;
 		}else if(acertou==true){
 			tabuleiro.posicionarBarco(posicao, "X");
 			acertou=false;
 		}
+
 		return acertou;
 	}
-
+        
 }
