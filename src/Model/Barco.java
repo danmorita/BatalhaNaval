@@ -6,14 +6,9 @@ import java.util.ArrayList;
 //private static int navio = 2;
 //private static int encruzador = 3;
 
-<<<<<<< HEAD
-public class Barco {//Aqui n devaria ser uma interface?
-=======
-// ~ = oceano
-// * = 
 
 public class Barco {
->>>>>>> Danilo
+
 
 	private int tamanho;
 	private boolean linha;

@@ -58,9 +58,10 @@ public class Jogador {
 			System.out.println("Escolha a posicao do Submarino: \n");
 			posicao = input.nextLine().trim();
                         System.out.println("Vertical ou Horizontal");
+                        vertical = input.nextLine().trim();
                         
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
-		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.addPosicaoLista(posicao,vertical);
 		submarino.addPosicao(posicao);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
@@ -71,7 +72,7 @@ public class Jogador {
 			System.out.println("Escolha a primeira posicao do Navio 1: \n");
 			posicao = input.nextLine().trim();
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
-		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.addPosicaoLista(posicao,vertical);
 		navio1.addPosicao(posicao);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
@@ -82,7 +83,7 @@ public class Jogador {
 			posicao = input.nextLine().trim();
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
 		navio1.addPosicao(posicao);
-		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.addPosicaoLista(posicao,vertical);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
 		posicao = null;
@@ -95,7 +96,7 @@ public class Jogador {
                        vertical = input.nextLine().trim().substring(0);
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
 		navio2.addPosicao(posicao);
-		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.addPosicaoLista(posicao, vertical);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
                 tabuleiro.posicionaHoriVert(posicao,vertical);
@@ -106,7 +107,7 @@ public class Jogador {
 			posicao = input.nextLine().trim();
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
 		navio2.addPosicao(posicao);
-		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.addPosicaoLista(posicao,vertical);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
 		posicao = null;
@@ -117,7 +118,7 @@ public class Jogador {
 			posicao = input.nextLine().trim();
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
 		encruzador1.addPosicao(posicao);
-		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.addPosicaoLista(posicao,vertical);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
 		posicao = null;
@@ -127,7 +128,7 @@ public class Jogador {
 			posicao = input.nextLine().trim();
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
 		encruzador1.addPosicao(posicao);
-		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.addPosicaoLista(posicao,vertical);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
 		posicao = null;
@@ -137,7 +138,7 @@ public class Jogador {
 			posicao = input.nextLine().trim();
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
 		encruzador1.addPosicao(posicao);
-		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.addPosicaoLista(posicao,vertical);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
 		posicao = null;
@@ -148,7 +149,7 @@ public class Jogador {
 			posicao = input.nextLine().trim();
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
 		encruzador2.addPosicao(posicao);
-		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.addPosicaoLista(posicao,vertical);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
 		posicao = null;
@@ -158,7 +159,7 @@ public class Jogador {
 			posicao = input.nextLine().trim();
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
 		encruzador2.addPosicao(posicao);
-		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.addPosicaoLista(posicao,vertical);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
 		posicao = null;
@@ -168,7 +169,7 @@ public class Jogador {
 			posicao = input.nextLine().trim();
 		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
 		encruzador2.addPosicao(posicao);
-		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.addPosicaoLista(posicao,vertical);
 		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
 		System.out.println("ultima acao do jogador...");
