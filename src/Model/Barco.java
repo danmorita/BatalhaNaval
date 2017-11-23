@@ -7,7 +7,11 @@ import java.util.ArrayList;
 //private static int encruzador = 3;
 
 
+
 public class Barco {
+
+// ~ = oceano
+// * = 
 
 
 	private int tamanho;
@@ -46,12 +50,11 @@ public class Barco {
 	public void addPosicao(String posicao){
 		this.posicao.add(posicao);
 	}
-	
-	
+
 	public String toString(){
 		return this.posicao.get(0)+"/"+this.posicao.get(1);
 	}
-	
+		
 	public boolean colocarBarco(){
 		return false;
 	}

@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class Tabuleiro {
 
-    
- 
     private String[][] tabuleiro;
     ArrayList<String> posicaoLista = new ArrayList();
     Random rnd = new Random();
@@ -15,7 +13,7 @@ public class Tabuleiro {
     public Tabuleiro(String[][] tabuleiro) {
         this.tabuleiro = tabuleiro;
     }
-    
+
     // posiciona na matriz o valor desejado, primeiro parametro para posicao ex:
     // A2, segundo parametro a leganda ex: N, �, X para aparecer na tabela
     public void posicionarBarco(String posicao, String valor) {
@@ -177,18 +175,16 @@ public class Tabuleiro {
         return acertou;
     }
 
- 
-   
     public static void main(String[] args) {
-        
 
     }
+
     public void imprime() {
         for (String i : this.posicaoLista) {
             System.out.println(i);
         }
     }
-    
+
     public void imprimirTabuleiro() {
         int lin = 0;
         int col = 0;
@@ -198,7 +194,7 @@ public class Tabuleiro {
             }
             System.out.println("");
         }
-        
+
     }
 
     // metodos do bot
@@ -345,6 +341,7 @@ public class Tabuleiro {
             }
         }
         return achou;
+        // posiciona na matriz o valor desejado, primeiro parametro para posicao ex:
+        // A2, segundo parametro a leganda ex: N, �, X para aparecer na tabela
     }
-
 }
