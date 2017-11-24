@@ -3,10 +3,7 @@ package Model;
 import java.util.Random;
 import java.util.Scanner;
 
-//radom para o bot acerta o barco,criar um vetor onde o bot testa se ele acerta ou erra se
-//for <7 ele erra(facil),se for <5 erra (medio),se for <3 erra(hard)
 import View.Tabuleiro;
-//fazer o bot acerta navios
 
 public class NPC {
 	Scanner input = new Scanner(System.in);
@@ -21,8 +18,7 @@ public class NPC {
 			{ "G", "\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t" },
 			{ "H", "\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t" },
 			{ "I", "\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t" },
-			{ "\n-", "-", "-", "Legenda:  ", "~ <- oceano\t", "N <- barcos\t", "X <- erros\t", "ï¿½ <- acertos\t", "B","O", "T\n\n" } };
-
+			{ "\n-", "-", "-", "Legenda:  ", "~ <- oceano\t", "N <- barcos\t", "X <- erros\t", "Ñ <- acertos\t", "B","O", "T\n\n" } };
 	
 	
 	String posicao; 
@@ -38,9 +34,7 @@ public class NPC {
 			{ "G", "\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t" },
 			{ "H", "\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t" },
 			{ "I", "\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t" },
-
-			{ "\n-", "-", "-", "Legenda:  ", "~ <- oceano\t", "N <- barcos\t", "X <- erros\t", "ï¿½ <- acertos\t", "B","O", "T\n\n" } };
-
+			{ "\n-", "-", "-", "Legenda:  ", "~ <- oceano\t", "N <- barcos\t", "X <- erros\t", "Ñ <- acertos\t", "B","O", "T\n\n" } };
 	Tabuleiro tabuleiroBotView = new Tabuleiro(tabuView);
 	public void npc() {
 	
@@ -84,7 +78,7 @@ public class NPC {
 		errou = tabuleiroBot.verificaLista(posicao);
 		System.out.println("entrou aqui "+errou);
 		if(errou==false){
-			tabuleiroBotView.posicionarBarco(posicao, "ï¿½");
+			tabuleiroBotView.posicionarBarco(posicao, "Ñ");
 			errou=true;
 		}else if(errou==true){
 			tabuleiroBotView.posicionarBarco(posicao, "X");

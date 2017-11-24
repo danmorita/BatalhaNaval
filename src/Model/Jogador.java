@@ -3,7 +3,6 @@ package Model;
 import java.util.Random;
 import java.util.Scanner;
 
-import Model.Barco;
 import View.Tabuleiro;
 
 public class Jogador {
@@ -20,11 +19,8 @@ public class Jogador {
 			{ "H", "\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t" },
 			{ "I", "\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t" },
 			{ "J", "\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t", "~\t\n" },
-
-			{ "Legenda:  ", "~ <- oceano\t", "N <- barcos\t", "X <- erros\t", "ï¿½ <- acertos\t", "P","L","A", "Y", "E","R\n\n" } };
-	String pos,vertical;
+			{ "Legenda:  ", "~ <- oceano\t", "N <- barcos\t", "X <- erros\t", "Ñ <- acertos\t", "P","L","A", "Y", "E","R\n\n" } };
 	String posicao;
-
 	Tabuleiro tabuleiro = new Tabuleiro(tabu);
 	
 	Barco submarino = new Barco(1);
@@ -57,129 +53,123 @@ public class Jogador {
 
 		// SUBMARINO
 		// loop para verificar posicao repetido na lista que usa para/ comparacao de acertos
+		/*do {
+				System.out.println("Entre com o ");
+				posicao = input.nextLine().trim();
+			
+		} while (tabuleiro.verificaLista(posicao) == false || tabuleiro.verificarPosicao(posicao) == false);*/
 		do {
 			System.out.println("Escolha a posicao do Submarino: \n");
-			pos = input.nextLine().trim();
-
-                        System.out.println("Vertical ou Horizontal");
-                        vertical = input.nextLine().trim();
-                        
-		} while ((tabuleiro.verificaLista(pos) == false) || (tabuleiro.verificarPosicao(pos) == false));
-		tabuleiro.addPosicaoLista(pos,vertical);
-
+			posicao = input.nextLine().trim();
+		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
 		
-		submarino.addPosicao(pos);
-		tabuleiro.posicionarBarco(pos, "N");
+		tabuleiro.addPosicaoLista(posicao);
+		submarino.addPosicao(posicao);
+		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
-		pos = null;
+		posicao = null;
 
 		// NAVIO 1
 		do {
 			System.out.println("Escolha a primeira posicao do Navio 1: \n");
-			pos = input.nextLine().trim();
-		} while ((tabuleiro.verificaLista(pos) == false) || (tabuleiro.verificarPosicao(pos) == false));
-
-		tabuleiro.addPosicaoLista(pos,vertical);
-
-		navio1.addPosicao(pos);
-		tabuleiro.posicionarBarco(pos, "N");
+			posicao = input.nextLine().trim();
+		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
+		tabuleiro.addPosicaoLista(posicao);
+		navio1.addPosicao(posicao);
+		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
-		pos = null;
+		posicao = null;
 
 		do {
 			System.out.println("Escolha a segunda posicao do Navio 1: \n");
-			pos = input.nextLine().trim();
-		} while ((tabuleiro.verificaLista(pos) == false) || (tabuleiro.verificarPosicao(pos) == false));
-		navio1.addPosicao(pos);
-		tabuleiro.addPosicaoLista(pos,vertical);
-
-		tabuleiro.posicionarBarco(pos, "N");
+			posicao = input.nextLine().trim();
+		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
+		navio1.addPosicao(posicao);
+		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
-		pos = null;
+		posicao = null;
 
 		// NAVIO 2
 		do {
 			System.out.println("Escolha a primeira posicao do Navio 2: \n");
-			pos = input.nextLine().trim();
-                       System.out.println("Vertical ou Horizontal");
-                       vertical = input.nextLine().trim().substring(0);
-		} while ((tabuleiro.verificaLista(pos) == false) || (tabuleiro.verificarPosicao(pos) == false));
-		navio2.addPosicao(pos);
-		tabuleiro.addPosicaoLista(pos, vertical);
-		tabuleiro.posicionarBarco(pos, "N");
+			posicao = input.nextLine().trim();
+		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
+		navio2.addPosicao(posicao);
+		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
-                tabuleiro.posicionaHoriVert(pos,vertical);
-                pos = null;
+		posicao = null;
 
 		do {
 			System.out.println("Escolha a primeira posicao do Navio 2: \n");
-			pos = input.nextLine().trim();
-		} while ((tabuleiro.verificaLista(pos) == false) || (tabuleiro.verificarPosicao(pos) == false));
-		navio2.addPosicao(pos);
-		tabuleiro.addPosicaoLista(pos,vertical);
-		tabuleiro.posicionarBarco(pos, "N");
+			posicao = input.nextLine().trim();
+		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
+		navio2.addPosicao(posicao);
+		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
-		pos = null;
+		posicao = null;
 
 		// ENCRUZADOR 1
 		do {
 			System.out.println("Escolha a primeira posicao do Encruzador 1: \n");
-			pos = input.nextLine().trim();
-		} while ((tabuleiro.verificaLista(pos) == false) || (tabuleiro.verificarPosicao(pos) == false));
-		encruzador1.addPosicao(pos);
-		tabuleiro.addPosicaoLista(pos,vertical);
-		tabuleiro.posicionarBarco(pos, "N");
+			posicao = input.nextLine().trim();
+		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
+		encruzador1.addPosicao(posicao);
+		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
-		pos = null;
+		posicao = null;
 
 		do {
 			System.out.println("Escolha a segunda posicao do Encruzador 1: \n");
-			pos = input.nextLine().trim();
-		} while ((tabuleiro.verificaLista(pos) == false) || (tabuleiro.verificarPosicao(pos) == false));
-		encruzador1.addPosicao(pos);
-		tabuleiro.addPosicaoLista(pos,vertical);
-		tabuleiro.posicionarBarco(pos, "N");
+			posicao = input.nextLine().trim();
+		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
+		encruzador1.addPosicao(posicao);
+		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
-		pos = null;
+		posicao = null;
 
 		do {
 			System.out.println("Escolha a terceira posicao do Encruzador 1: \n");
-			pos = input.nextLine().trim();
-		} while ((tabuleiro.verificaLista(pos) == false) || (tabuleiro.verificarPosicao(pos) == false));
-		encruzador1.addPosicao(pos);
-		tabuleiro.addPosicaoLista(pos,vertical);
-		tabuleiro.posicionarBarco(pos, "N");
+			posicao = input.nextLine().trim();
+		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
+		encruzador1.addPosicao(posicao);
+		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
-		pos = null;
+		posicao = null;
 
 		// ENCRUZADOR 2
 		do {
 			System.out.println("Escolha a primeira posicao do Encruzador 2: \n");
-			pos = input.nextLine().trim();
-		} while ((tabuleiro.verificaLista(pos) == false) || (tabuleiro.verificarPosicao(pos) == false));
-		encruzador2.addPosicao(pos);
-		tabuleiro.addPosicaoLista(pos,vertical);
-		tabuleiro.posicionarBarco(pos, "N");
+			posicao = input.nextLine().trim();
+		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
+		encruzador2.addPosicao(posicao);
+		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
-		pos = null;
+		posicao = null;
 
 		do {
 			System.out.println("Escolha a segunda posicao do Encruzador 2: \n");
-			pos = input.nextLine().trim();
-		} while ((tabuleiro.verificaLista(pos) == false) || (tabuleiro.verificarPosicao(pos) == false));
-		encruzador2.addPosicao(pos);
-		tabuleiro.addPosicaoLista(pos,vertical);
-		tabuleiro.posicionarBarco(pos, "N");
+			posicao = input.nextLine().trim();
+		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
+		encruzador2.addPosicao(posicao);
+		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
-		pos = null;
+		posicao = null;
 
 		do {
 			System.out.println("Escolha a terceira posicao do Encruzador 2: \n");
-			pos = input.nextLine().trim();
-		} while ((tabuleiro.verificaLista(pos) == false) || (tabuleiro.verificarPosicao(pos) == false));
-		encruzador2.addPosicao(pos);
-		tabuleiro.addPosicaoLista(pos,vertical);
-		tabuleiro.posicionarBarco(pos, "N");
+			posicao = input.nextLine().trim();
+		} while ((tabuleiro.verificaLista(posicao) == false) || (tabuleiro.verificarPosicao(posicao) == false));
+		encruzador2.addPosicao(posicao);
+		tabuleiro.addPosicaoLista(posicao);
+		tabuleiro.posicionarBarco(posicao, "N");
 		tabuleiro.imprimirTabuleiro();
 		System.out.println("ultima acao do jogador...");
 		
@@ -189,16 +179,16 @@ public class Jogador {
 		System.out.println("Aguarde o bot... \n");
 		System.out.println("pressione ENTER para continuar...");
 		input.nextLine();
-		pos = (random.nextInt(9)+1)+""+(random.nextInt(9)+1);
-		acertou = tabuleiro.verificaLista(pos);
+		posicao = (random.nextInt(9)+1)+""+(random.nextInt(9)+1);
+		acertou = tabuleiro.verificaLista(posicao);
 		if(acertou == true){
-			acertou = tabuleiro.verificaMatriz(pos);
+			acertou = tabuleiro.verificaMatriz(posicao);
 		}
 		if(acertou==false){
-			tabuleiro.posicionarBarco(pos, "ï¿½");
+			tabuleiro.posicionarBarco(posicao, "Ñ");
 			acertou=true;
 		}else if(acertou==true){
-			tabuleiro.posicionarBarco(pos, "X");
+			tabuleiro.posicionarBarco(posicao, "X");
 			acertou=false;
 		}
 		return acertou;
@@ -211,16 +201,15 @@ public class Jogador {
 		System.out.println("pressione ENTER para continuar...");
 		input.nextLine();
 		
-		acertou = tabuleiro.verificaLista(pos);
+		acertou = tabuleiro.verificaLista(posicao);
 		if(acertou==false){
-			tabuleiro.posicionarBarco(pos, "ï¿½");
+			tabuleiro.posicionarBarco(posicao, "Ñ");
 			acertou=true;
 		}else if(acertou==true){
-			tabuleiro.posicionarBarco(pos, "X");
+			tabuleiro.posicionarBarco(posicao, "X");
 			acertou=false;
 		}
-
 		return acertou;
 	}
-        
+
 }
