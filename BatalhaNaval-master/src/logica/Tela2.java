@@ -1,34 +1,46 @@
 package logica;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import telas.Botao;
 
-public class Tela2 extends JFrame {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2875856536877113449L;
+public class Tela2 {
 
 	/**
 	 * Atributos da tela principal
 	 */
-
-	private Botao tabuleiro1[][], tabuleiro2[][];
-	private JPanel painelTBJogador, painelTBNPC;
-	private JPanel painelBotoes;
-	private Botao sair, reiniciar;
+	private JFrame frame;
+	private Botao tabuleiro[][];
+	private Botao btBarco2H;
+	private Botao btBarco2V;
+	private Botao btBarco3H;
+	private Botao btBarco3V;
+	private Botao btBarco1HV;
+	private Botao btprocimo;
+	private Botao btanterior;
+	private Botao sair, reiniciar, btTrocaBarco;
+	private JPanel painelBarco2H;
+	private JPanel painelBarco2V;
+	private JPanel painelBarco3H;
+	private JPanel painelBarco3V;
+	private JPanel painelBarco1HV;
+	private JPanel painelCentral;
+	private JPanel painelTBJogador;
+	private JPanel painelNorte;
+	private JPanel painelSul;
+	private CardLayout card;
 	private Jogo jogo;
+	private int idx;
 
 	/**
 	 * Main
@@ -43,11 +55,12 @@ public class Tela2 extends JFrame {
 	 * Construtor publico
 	 */
 	public Tela2() {
-		super("Batalha Naval");
 		inicializaAtributos();
-		// configuraComponentes();
+		configuraComponentes();
+		CG();
 		defineLayouts();
 		adicionaComponentes();
+		Componentes();
 		adicionaAcoes();
 		inicializaParametros();
 	}
@@ -58,83 +71,143 @@ public class Tela2 extends JFrame {
 	private void adicionaAcoes() {
 		sair.addActionListener(new Acoes());
 
-		for (int i = 0; i < tabuleiro1.length; i++) {
-			for (int j = 0; j < tabuleiro1[i].length; j++) {
-				tabuleiro1[i][j].addActionListener(new Acoes());
+		for (int i = 0; i < tabuleiro.length; i++) {
+			for (int j = 0; j < tabuleiro[i].length; j++) {
+				tabuleiro[i][j].addActionListener(new Acoes());
 			}
 		}
-	}
 
-	/*
-	 * private void configuraComponentes() { this.tabuleiro1[][].setIcon(new
-	 * ImageIcon("agua.jpg")); this.tabuleiro1.setEnabled(false);
-	 * this.tabuleiro1.setSize(50, 50); }
-	 */
+		btTrocaBarco.addActionListener(e -> {
+			card.show(painelCentral, idx++ + "");
+			System.out.println(idx);
+			if (idx == 7)
+				idx = 1;
+		});
+	}
 
 	/**
 	 * adiciona componentes nos paineis
 	 */
-	private void adicionaComponentes() {
-		getContentPane().add(painelTBJogador, BorderLayout.WEST);
-		
+	private void Componentes() {
+		frame.getContentPane().add(painelTBJogador, BorderLayout.WEST);
+		frame.getContentPane().add(painelNorte, BorderLayout.NORTH);
+		frame.getContentPane().add(painelCentral, BorderLayout.CENTER);
 
-		for (int i = 0; i < tabuleiro1.length; i++) {
-			for (int j = 0; j < tabuleiro1[i].length; j++) {
-				painelTBJogador.add(tabuleiro1[i][j]);
-				// this.painelTBJogador.add(agua, BorderLayout.CENTER);
+		for (int i = 0; i < tabuleiro.length; i++) {
+			for (int j = 0; j < tabuleiro[i].length; j++) {
+				painelTBJogador.add(tabuleiro[i][j]);
+				tabuleiro[i][j].setIcon(new ImageIcon("agua1.jpg"));
+				tabuleiro[i][j].setPreferredSize(new Dimension(50, 50));
 			}
 		}
+		this.painelNorte.add(sair);
+		this.painelNorte.add(reiniciar);
+		this.painelNorte.add(btanterior);
+		this.painelNorte.add(btprocimo);
 
+	}
 
-		getContentPane().add(painelBotoes, BorderLayout.NORTH);
-		painelBotoes.add(sair);
-		painelBotoes.add(reiniciar);
+	private void configuraComponentes() {
+		this.btBarco1HV.setIcon(new ImageIcon("Barco1HV.jpg"));
+		this.btBarco1HV.setEnabled(false);
+		this.btBarco1HV.setDisabledIcon(new ImageIcon("Barco1HV.jpg"));
 
+		this.btBarco2H.setIcon(new ImageIcon("Barco2H.jpg"));
+		this.btBarco2H.setEnabled(false);
+		this.btBarco2H.setDisabledIcon(new ImageIcon("Barco2H.jpg"));
+
+		this.btBarco2V.setIcon(new ImageIcon("Barco2V.jpg"));
+		this.btBarco2V.setEnabled(false);
+		this.btBarco2V.setDisabledIcon(new ImageIcon("Barco2V.jpg"));
+
+		this.btBarco3H.setIcon(new ImageIcon("Barco3H.jpg"));
+		this.btBarco3H.setEnabled(false);
+		this.btBarco3H.setDisabledIcon(new ImageIcon("Barco3H.jpg"));
+
+		this.btBarco3V.setIcon(new ImageIcon("Barco3V.jpg"));
+		this.btBarco3V.setEnabled(false);
+		this.btBarco3V.setDisabledIcon(new ImageIcon("Barco3V.jpg"));
+	}
+
+	private void CG() {
+		this.frame.setLayout(new BorderLayout());
+		this.painelSul.setLayout(new FlowLayout(FlowLayout.CENTER));
+		this.painelCentral.setLayout(this.card);
+		this.painelBarco1HV.setLayout(new BorderLayout());
+		this.painelBarco2H.setLayout(new BorderLayout());
+		this.painelBarco2V.setLayout(new BorderLayout());
+		this.painelBarco3H.setLayout(new BorderLayout());
+		this.painelBarco3V.setLayout(new BorderLayout());
 	}
 
 	/**
 	 * define os layouts dos paineis
 	 */
 	private void defineLayouts() {
-		getContentPane().setLayout(new BorderLayout());
-		painelTBJogador.setLayout(new GridLayout(10, 10));
-		painelTBNPC.setLayout(new GridLayout(10, 10));
-		painelBotoes.setLayout(new FlowLayout(FlowLayout.LEFT));
+		this.painelTBJogador.setLayout(new GridLayout(10, 10));
+		this.painelNorte.setLayout(new FlowLayout(FlowLayout.LEFT));
+	}
+
+	private void adicionaComponentes() {
+		this.painelSul.add(btTrocaBarco);
+		this.frame.add(painelCentral, BorderLayout.CENTER);
+		this.frame.add(painelSul, BorderLayout.SOUTH);
+		this.painelBarco1HV.add(btBarco1HV, BorderLayout.CENTER);
+		this.painelBarco2H.add(btBarco2H, BorderLayout.CENTER);
+		this.painelBarco2V.add(btBarco2V, BorderLayout.CENTER);
+		this.painelBarco3H.add(btBarco3H, BorderLayout.CENTER);
+		this.painelBarco3V.add(btBarco3V, BorderLayout.CENTER);
+		this.painelCentral.add(painelBarco1HV, 1 + "");
+		this.painelCentral.add(painelBarco2H, 2 + "");
+		this.painelCentral.add(painelBarco2V, 3 + "");
+		this.painelCentral.add(painelBarco3H, 4 + "");
+		this.painelCentral.add(painelBarco3V, 5 + "");
 	}
 
 	/**
 	 * inicializa os atributos da classe
 	 */
 	private void inicializaAtributos() {
-		tabuleiro1 = new Botao[10][10];
-		tabuleiro2 = new Botao[10][10];
-		for (int i = 0; i < tabuleiro1.length; i++) {
-			for (int j = 0; j < tabuleiro1[i].length; j++) {
-				tabuleiro1[i][j] = new Botao();
-				tabuleiro1[i][j].x = i;
-				tabuleiro1[i][j].y = j;
-
-				tabuleiro2[i][j] = new Botao();
-				tabuleiro2[i][j].x = i;
-				tabuleiro2[i][j].y = j;
+		tabuleiro = new Botao[10][10];
+		for (int i = 0; i < tabuleiro.length; i++) {
+			for (int j = 0; j < tabuleiro[i].length; j++) {
+				tabuleiro[i][j] = new Botao();
+				tabuleiro[i][j].x = i;
+				tabuleiro[i][j].y = j;
 			}
 		}
-
+		frame = new JFrame("Batalha naval");
 		painelTBJogador = new JPanel();
-		painelTBNPC = new JPanel();
-		painelBotoes = new JPanel();
+		painelNorte = new JPanel();
 		sair = new Botao("Sair");
 		reiniciar = new Botao("Resetar");
 		jogo = new Jogo();
+		btBarco2H = new Botao();
+		btBarco2V = new Botao();
+		btBarco3H = new Botao();
+		btBarco3V = new Botao();
+		btBarco1HV = new Botao();
+		btprocimo = new Botao();
+		btanterior = new Botao();
+		btTrocaBarco = new Botao("Troca barco");
+		painelBarco2H = new JPanel();
+		painelBarco2V = new JPanel();
+		painelBarco3H = new JPanel();
+		painelBarco3V = new JPanel();
+		painelBarco1HV = new JPanel();
+		painelCentral = new JPanel();
+		painelSul = new JPanel();
+		card = new CardLayout();
+		idx = 2;
 	}
 
 	/**
 	 * set os parametros principais da tela
 	 */
 	private void inicializaParametros() {
-		setSize(1200, 500);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+		frame.setSize(675, 500);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 	}
 
 	/**
@@ -150,28 +223,63 @@ public class Tela2 extends JFrame {
 
 			Botao b = (Botao) e.getSource();
 
-			if (b.getParent() == painelBotoes) {
+			if (b.getParent() == painelNorte) {
 				if (b == sair) {
 					System.exit(0);
 				}
 			} else if (b.getParent() == painelTBJogador) {
 				int x = b.x;
 				int y = b.y;
+				/*
+				 * Posição do botão clicado
+				 */
+				System.out.println("Posição " + x + "-" + y);
 				int conteudo = jogo.joga(x, y);
 				System.out.println(conteudo);
-				if (conteudo == 0)
-					b.setIcon(new ImageIcon("agua.jpg"));
-				else if (conteudo == 1)
-					b.setIcon(new ImageIcon("barco.png"));
-			} else if (b.getParent() == painelTBNPC) {
-				int x = b.x;
-				int y = b.y;
-				int conteudo = jogo.joga(x, y);
-				System.out.println(conteudo);
-				if (conteudo == 0)
-					b.setIcon(new ImageIcon("agua.jpg"));
-				else if (conteudo == 1)
-					b.setIcon(new ImageIcon("barco.png"));
+				System.out.println("idx" + idx);
+				switch (idx) {
+				case 0:
+					b.setIcon(new ImageIcon("submarino.jpg"));
+					break;
+				case 2:
+					b.setIcon(new ImageIcon("submarino.jpg"));
+					break;
+				case 3:
+					if (y == 9)
+						b.setIcon(new ImageIcon("agua1.jpg"));
+					else {
+						b.setIcon(new ImageIcon("navegador1H.jpg"));
+						tabuleiro[x][y + 1].setIcon(new ImageIcon("navegador2H.jpg"));
+					}
+					break;
+				case 4:
+					if (x == 9)
+						b.setIcon(new ImageIcon("agua1.jpg"));
+					else {
+						b.setIcon(new ImageIcon("navegador1V.jpg"));
+						tabuleiro[x + 1][y].setIcon(new ImageIcon("navegador2V.jpg"));
+					}
+					break;
+				case 5:
+					if (y == 8 || y == 9)
+						b.setIcon(new ImageIcon("agua1.jpg"));
+					else {
+						b.setIcon(new ImageIcon("cruzador1H.jpg"));
+						tabuleiro[x][y + 1].setIcon(new ImageIcon("cruzador2H.jpg"));
+						tabuleiro[x][y + 2].setIcon(new ImageIcon("cruzador3H.jpg"));
+					}
+					break;
+				case 6:
+					if (x == 8 || x == 9)
+						b.setIcon(new ImageIcon("agua1.jpg"));
+					else {
+						b.setIcon(new ImageIcon("cruzador1V.jpg"));
+						tabuleiro[x + 1][y].setIcon(new ImageIcon("cruzador2V.jpg"));
+						tabuleiro[x + 2][y].setIcon(new ImageIcon("cruzador3V.jpg"));
+					}
+					break;
+				}
+
 			}
 
 		}

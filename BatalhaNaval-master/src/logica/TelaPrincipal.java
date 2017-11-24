@@ -39,6 +39,18 @@ public class TelaPrincipal extends JFrame {
 	public static void main(String[] args) {
 		new TelaPrincipal();
 	}
+	/*
+	 * Rescebe os botoes do tabulero player
+	 * */
+	public void setTabuleiro(Botao tabuleiro2[][]) {
+		this.tabuleiro2 = tabuleiro2;
+		for (int i = 0; i < tabuleiro2.length; i++) {
+			for (int j = 0; j < tabuleiro2[i].length; j++) {
+				painelTBNPC.add(tabuleiro2[i][j]);
+			}
+		}
+
+	}
 
 	/**
 	 * Construtor publico
@@ -51,6 +63,7 @@ public class TelaPrincipal extends JFrame {
 		adicionaAcoes();
 		inicializaParametros();
 	}
+	
 
 	/**
 	 * adiciona acoes dos botoes
@@ -80,13 +93,6 @@ public class TelaPrincipal extends JFrame {
 			}
 		}
 		
-		for (int i = 0; i < tabuleiro2.length; i++) {
-			for (int j = 0; j < tabuleiro2[i].length; j++) {
-				painelTBNPC.add(tabuleiro2[i][j]);
-				tabuleiro2[i][j].setIcon(new ImageIcon("agua1.jpg"));
-				tabuleiro2[i][j].setPreferredSize(new Dimension(50, 50));
-			}
-		}
 		
 		getContentPane().add(painelBotoes, BorderLayout.NORTH);
 		painelBotoes.add(sair);
@@ -109,16 +115,17 @@ public class TelaPrincipal extends JFrame {
 	 */
 	private void inicializaAtributos() {
 		tabuleiro1 = new Botao[10][10];
-		tabuleiro2 = new Botao[10][10];
+		//tabuleiro2 = new Botao[10][10];
 		for (int i = 0; i < tabuleiro1.length; i++) {
 			for (int j = 0; j < tabuleiro1[i].length; j++) {
 				tabuleiro1[i][j] = new Botao();
 				tabuleiro1[i][j].x = i;
 				tabuleiro1[i][j].y = j;
-				
+				/*
 				tabuleiro2[i][j] = new Botao();
 				tabuleiro2[i][j].x = i;
 				tabuleiro2[i][j].y = j;
+				*/
 			}
 		}
 
@@ -167,16 +174,6 @@ public class TelaPrincipal extends JFrame {
 				else if (conteudo == 1)
 					b.setIcon(new ImageIcon("submarino.jpg"));
 			}
-			 else if (b.getParent() == painelTBNPC) {
-					int x = b.x;
-					int y = b.y;
-					int conteudo = jogo.joga(x, y);
-					System.out.println(conteudo);
-					if (conteudo == 0)
-						b.setIcon(new ImageIcon("agua.jpg"));
-					else if (conteudo == 1)
-						b.setIcon(new ImageIcon("barco.png"));
-				}
 
 		}
 

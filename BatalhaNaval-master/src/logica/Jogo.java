@@ -15,11 +15,6 @@ public class Jogo {
 		tabuleiro = new int[10][10];
 		jogador = true;
 		tabuleiro[0][0] = 1;
-		tabuleiro[1][0] = 1;
-		tabuleiro[2][0] = 1;
-		tabuleiro[3][0] = 1;
-		tabuleiro[4][0] = 1;
-		tabuleiro[5][0] = 1;
 	}
 
 	/**
