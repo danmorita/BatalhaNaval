@@ -6,7 +6,7 @@ import java.util.Scanner;
 import Model.Jogador;
 import Model.NPC;
 
-public class MainMenu {
+public class Menu {
 	public static void main(String[] args) {
 		
 		Jogador jogador = new Jogador();

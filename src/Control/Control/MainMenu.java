@@ -4,7 +4,7 @@ package Control;
 import java.util.Scanner;
 
 import Model.Jogador;
-import Model.NPC;
+import logica.NPC;
 
 public class MainMenu {
 	public static void main(String[] args) {
